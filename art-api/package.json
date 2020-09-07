@@ -1,0 +1,27 @@
+{
+  "name": "art-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev -r dotenv/config --respawn --no-notify app.ts",
+    "layer": "sls deploy --target=./layer"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "@koa/router": "^9.4.0",
+    "@types/koa": "^2.11.4",
+    "@types/koa__cors": "^3.0.1",
+    "@types/koa__router": "^8.0.2",
+    "axios": "^0.20.0",
+    "cos-nodejs-sdk-v5": "^2.7.0",
+    "dotenv": "^8.2.0",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "ts-node": "^9.0.0",
+    "ts-node-dev": "^1.0.0-pre.62",
+    "typescript": "^4.0.2"
+  }
+}

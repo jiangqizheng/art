@@ -1,0 +1,11 @@
+component: layer
+app: art
+name: art-api-layer
+stage: dev
+
+inputs:
+  region: ap-guangzhou
+  name: ${name}
+  src: ../node_modules
+  runtimes:
+    - Nodejs10.15

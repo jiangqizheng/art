@@ -1,0 +1,39 @@
+component: nextjs
+app: art
+name: art-front
+stage: dev
+
+inputs:
+  src:
+    dist: ./
+    hook: npm run build
+    exclude:
+      - .env
+  region: ap-guangzhou
+  functionName: ${name}
+  runtime: Nodejs12.16
+  staticConf:
+    cosConf:
+      bucket: art-front
+  apigatewayConf:
+    enableCORS: true
+    protocols:
+      - https
+      - http
+    environment: release
+    customDomains:
+      - domain: art.x96.xyz
+        certificateId: xxxxx # 配置为你自己到id
+        # 这里将 API 网关的 release 环境映射到根路径
+        isDefaultMapping: false
+        pathMappingSet:
+          - path: /
+            environment: release
+        protocols:
+          - https
+  functionConf:
+    timeout: 60
+    memorySize: 128
+    environment:
+      variables:
+        apiUrl: ${output:${stage}:${app}:art-api.apigw.url} # 此处可以将api通过环境变量注入

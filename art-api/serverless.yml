@@ -1,0 +1,28 @@
+component: koa # 这里填写对应的 component
+app: art
+name: art-api
+stage: dev
+
+inputs:
+  src:
+    src: ./
+    exclude:
+      - node_modules/**
+  functionName: ${name}
+  region: ap-guangzhou
+  runtime: Nodejs10.15
+  functionConf:
+    timeout: 30 # 超时时间配置的稍微久一点
+    memorySize: 256 
+    environment:
+      variables: # 配置环境变量，同时也可以直接在scf控制台配置
+        NODE_ENV: production
+  apigatewayConf:
+    enableCORS: true
+    protocols:
+      - https
+      - http
+    environment: release
+  layers:
+    - name: ${output:${stage}:${app}:${name}-layer.name}
+      version: ${output:${stage}:${app}:${name}-layer.version}

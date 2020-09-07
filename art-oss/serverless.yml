@@ -1,0 +1,17 @@
+component: cos
+name: art-oss
+app: art
+stage: dev
+
+inputs:
+  src:
+    src: ./
+    exclude:
+      - .env # 防止密钥被上传
+  bucket: ${name} # 存储桶名称，如若不添加 AppId 后缀，则系统会自动添加，后缀为大写（xart-oss-<你的appid>）
+  website: false
+  targetDir: /
+  protocol: https
+  region: ap-guangzhou # 配置区域，尽量配置在和服务同区域内，速度更快
+  acl:
+    permissions: public-read # 读写配置为，私有写，共有读

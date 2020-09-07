@@ -1,0 +1,14 @@
+{
+  "name": "art-tf",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^2.3.0",
+    "cos-nodejs-sdk-v5": "^2.6.2",
+    "images": "^3.2.3",
+    "jpeg-js": "^0.4.2"
+  }
+}
