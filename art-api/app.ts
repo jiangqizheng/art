@@ -35,7 +35,7 @@ router.get("/api/images", async (ctx) => {
 
   const cosURL = `https://${cosInfo.Bucket}.cos.${cosInfo.Region}.myqcloud.com`;
   ctx.body = files.Contents.map((it) => {
-    const [timestamp, size] = it.Key.split(".jpg")[0].split("__");
+    const [_, timestamp, size] = it.Key.split(".jpg")[0].split("__");
     const [width, height] = size.split("_");
     return {
       url: `${cosURL}/${it.Key}`,
@@ -60,7 +60,7 @@ router.post("/api/images/upload", async (ctx) => {
   if (data.success) {
     const afterImg = await putObjectSync({
       ...cosInfo,
-      Key: `result/${Date.now()}__400_200.jpg`,
+      Key: `result/__${Date.now()}__400_200.jpg`,
       Body: Buffer.from(data.data, 'base64'),
     });
     ctx.body = {
